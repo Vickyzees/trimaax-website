@@ -1,48 +1,90 @@
-'use client';   // <--- THIS IS THE MAGIC LINE WE MISSED
+'use client';
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Facebook, Twitter, Globe, Mail, Phone, Users, Trophy } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 font-bold text-xl text-blue-400">
-            TRIMAAX TECH
-          </div>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/" className="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-              <Link href="#services" className="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
-              <Link href="#about" className="hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium">About Us</Link>
-              <Link href="#contact" className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md text-sm font-medium">Contact</Link>
-            </div>
+    <header className="w-full font-sans">
+      
+      {/* 1. TOP BAR */}
+      <div className="bg-slate-900 text-gray-400 text-xs py-2 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+          <div className="flex space-x-4">
+            <a href="#" className="hover:text-white transition-colors"><Facebook size={14} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Twitter size={14} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Globe size={14} /></a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          <div className="hidden md:flex space-x-6">
+            {/* NEW ORDER: Awards First */}
+            <Link href="/awards" className="hover:text-yellow-400 flex items-center gap-1 transition-colors text-yellow-500 font-bold">
+                <Trophy size={12}/> Our Awards
+            </Link>
+            <Link href="/about" className="hover:text-white flex items-center gap-1 transition-colors">
+                <Users size={12}/> About Us
+            </Link>
+            <Link href="/contact" className="hover:text-white flex items-center gap-1 transition-colors">
+                <Phone size={12}/> Contact Us
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. MAIN NAVIGATION */}
+      <div className="bg-slate-950 text-white shadow-xl border-b border-slate-800 relative z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex-shrink-0 flex items-center gap-3">
+              <Link href="/">
+                <img src="/logo.png" alt="Trimaax Tech Logo" className="h-12 w-auto object-contain" />
+              </Link>
+            </div>
+
+            <nav className="hidden xl:flex space-x-1">
+              <NavLink href="/" text="Home" />
+              <NavLink href="/services" text="Services" />
+              <NavLink href="/facilities" text="Facilities" />
+              <NavLink href="/products" text="Products" />
+              <NavLink href="/projects" text="Projects" />
+              <NavLink href="/organisation" text="Organisation" />
+              <NavLink href="/clients" text="Clients" />
+            </nav>
+
+            <div className="xl:hidden">
+              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white">
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Mobile Dropdown */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-             <Link href="#contact" className="block bg-blue-600 px-3 py-2 rounded-md text-base font-medium">Contact Us</Link>
+        <div className="xl:hidden bg-slate-900 text-white border-t border-slate-800 absolute w-full z-50">
+          <div className="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+             <Link href="/awards" className="block px-4 py-3 rounded-lg bg-yellow-500/10 text-yellow-500 font-bold">Our Awards</Link>
+             <Link href="/about" className="block px-4 py-3 rounded-lg hover:bg-slate-800">About Us</Link>
+             <Link href="/clients" className="block px-4 py-3 rounded-lg hover:bg-slate-800">Clients</Link>
           </div>
         </div>
       )}
-    </nav>
+    </header>
+  );
+}
+
+function NavLink({ href, text, highlight }) {
+  return (
+    <Link 
+      href={href} 
+      className={`px-3 py-2 text-xs font-bold rounded transition duration-200 uppercase tracking-wide
+        ${highlight ? 'text-yellow-500 hover:bg-yellow-500/10' : 'text-slate-300 hover:text-white hover:bg-white/10'}`}
+    >
+      {text}
+    </Link>
   );
 }
