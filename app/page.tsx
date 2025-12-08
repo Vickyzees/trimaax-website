@@ -33,7 +33,7 @@ export default function Home() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
           <div className="inline-block mb-4 px-4 py-1 rounded-full border border-red-500/50 bg-red-500/10 text-red-400 text-sm font-medium tracking-wide backdrop-blur-md">
-            ISO 9001:2008 CERTIFIED EPC FIRM
+            ISO 9001:2015 CERTIFIED EPC FIRM
           </div>
           <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
             ENGINEERING THE <br />
