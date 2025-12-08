@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <div className="bg-slate-950 text-white font-sans selection:bg-blue-500 selection:text-white overflow-x-hidden">
       
-      {/* 1. HERO SECTION: The Uplink */}
+      {/* 1. HERO SECTION */}
       <section className="relative py-24 px-6 text-center">
         <div className="absolute inset-0 z-0">
            <div className="absolute top-0 center w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-950 to-slate-950"></div>
@@ -44,7 +44,7 @@ export default function ContactPage() {
           {/* LEFT: 3D LOCATION CARDS */}
           <div className="space-y-8 perspective-1000">
              
-             {/* UNIT 1 CARD (HQ) */}
+             {/* UNIT 1: HQ */}
              <div className="group relative bg-slate-900/50 backdrop-blur-md border border-slate-700 p-8 rounded-3xl hover:border-blue-500/50 transition-all duration-500 hover:rotate-y-2 hover:shadow-2xl">
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
                    <Building2 size={64} className="text-blue-500" />
@@ -62,25 +62,25 @@ export default function ContactPage() {
                 <ContactInfo />
              </div>
 
-             {/* UNIT 2 CARD (HEAVY YARD) */}
+             {/* UNIT 2: HEAVY YARD */}
              <div className="group relative bg-slate-900/50 backdrop-blur-md border border-slate-700 p-8 rounded-3xl hover:border-red-500/50 transition-all duration-500 hover:rotate-y-2 hover:shadow-2xl">
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
                    <Factory size={64} className="text-red-500" />
                 </div>
                 <div className="inline-block px-3 py-1 bg-red-500/20 text-red-400 text-xs font-bold rounded mb-4">UNIT 02 • HEAVY YARD</div>
-                <h3 className="text-2xl font-bold mb-2">Sriperumbuthur Facility</h3>
+                <h3 className="text-2xl font-bold mb-2">Sriperumbudur Facility</h3>
                 <div className="flex items-start gap-4 text-slate-400 mb-6">
                    <MapPin size={24} className="shrink-0 text-red-500 mt-1" />
                    <p className="leading-relaxed">
                       Plot No. K14, SIPCOT Industrial Complex,<br />
-                      Sriperumpudur, Kancheepuram District - 602105,<br />
+                      Sriperumbudur, Kancheepuram District - 602105,<br />
                       Tamilnadu, India.
                    </p>
                 </div>
                 <ContactInfo />
              </div>
 
-             {/* UNIT 3 CARD (SMART PARK - NEW) */}
+             {/* UNIT 3: SMART PARK (New Expansion) */}
              <div className="group relative bg-slate-900/50 backdrop-blur-md border border-slate-700 p-8 rounded-3xl hover:border-orange-500/50 transition-all duration-500 hover:rotate-y-2 hover:shadow-2xl">
                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
                    <Zap size={64} className="text-orange-500" />
@@ -100,7 +100,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* RIGHT: THE "TRANSMISSION" FORM */}
+          {/* RIGHT: CONTACT FORM */}
           <div className="relative">
              <div className="absolute inset-0 bg-blue-600 rounded-[3rem] blur-[100px] opacity-10"></div>
              
@@ -109,7 +109,6 @@ export default function ContactPage() {
                 <p className="text-slate-400 mb-8">Our engineering team usually responds within 24 hours.</p>
 
                 <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
-                   {/* Web3Forms Access Key */}
                    <input type="hidden" name="access_key" value="bebed2fd-8fea-4182-9fa2-3ed1359ba7c1" />
                    <input type="hidden" name="redirect" value="http://localhost:3000/contact" />
 
@@ -135,10 +134,6 @@ export default function ContactPage() {
                    <button type="submit" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all group">
                       Transmit Message <Send size={18} className="group-hover:translate-x-1 transition-transform" />
                    </button>
-                   
-                   <p className="text-xs text-slate-500 text-center mt-4">
-                      By sending this form, you agree to our privacy policy. Your data is secure.
-                   </p>
                 </form>
              </div>
           </div>
@@ -149,8 +144,6 @@ export default function ContactPage() {
     </div>
   );
 }
-
-// --- COMPONENTS ---
 
 function ContactInfo() {
     return (

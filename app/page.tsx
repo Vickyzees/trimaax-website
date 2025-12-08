@@ -103,7 +103,7 @@ export default function Home() {
               title="Sriperumbuthur Facility"
               tag="UNIT 2"
               desc="A comprehensive center for heavy fabrication. Handles Pipelines, Vessels, Columns, blasting, coating, and valve testing."
-              address="SIPCOT Industrial Complex, Sriperumpudur, Kancheepuram - 602105, Tamilnadu - India."
+              address="SIPCOT Industrial Complex, Sriperumbuthur, Kancheepuram - 602105, Tamilnadu - India."
               icon={<Settings size={32} className="text-red-600" />}
             />
 
