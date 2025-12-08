@@ -8,7 +8,10 @@ import {
   ShieldCheck, 
   Cpu, 
   Zap,
-  CheckCircle 
+  CheckCircle,
+  Trophy,
+  Award,
+  FileText
 } from 'lucide-react';
 
 export default function Home() {
@@ -18,7 +21,7 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950">
         
-        {/* NEW BACKGROUND (No Image File Needed) */}
+        {/* Modern Gradient Background */}
         <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#0f172a] to-black"></div>
             <div className="absolute inset-0 opacity-20" 
@@ -31,10 +34,27 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-950 to-transparent"></div>
         </div>
 
+        {/* --- NEW GST BADGE (Top Right Corner) --- */}
+        <div className="absolute top-6 right-6 z-30 hidden md:block">
+           <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 group hover:bg-white/20 transition-all">
+              <div className="bg-green-500/20 p-2 rounded-lg text-green-400">
+                 <FileText size={20} />
+              </div>
+              <div className="text-left">
+                 <div className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Govt Registered</div>
+                 <div className="text-white font-mono font-black text-lg tracking-wide group-hover:text-green-400 transition-colors">
+                    GSTIN: 33AACCT4052G1ZO
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        {/* Hero Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-block mb-4 px-4 py-1 rounded-full border border-red-500/50 bg-red-500/10 text-red-400 text-sm font-medium tracking-wide backdrop-blur-md">
-            ISO 9001:2015 CERTIFIED EPC FIRM
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1 rounded-full border border-red-500/50 bg-red-500/10 text-red-400 text-sm font-medium tracking-wide backdrop-blur-md">
+            <ShieldCheck size={14} /> ISO 9001:2015 CERTIFIED EPC FIRM
           </div>
+          
           <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
             ENGINEERING THE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">
@@ -55,10 +75,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. LEGACY & STATS */}
+      {/* 2. TRUST & AWARDS BANNER */}
+      <section className="bg-slate-900 border-y border-white/5 py-12">
+         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-4">
+               <div className="p-3 bg-yellow-500/20 rounded-xl text-yellow-500">
+                  <Trophy size={32} />
+               </div>
+               <div>
+                  <h3 className="text-white font-bold text-lg">Awarded Excellence</h3>
+                  <p className="text-slate-400 text-sm">Honored by Vestas Wind Technology</p>
+               </div>
+            </div>
+            
+            <div className="h-8 w-px bg-slate-800 hidden md:block"></div>
+
+            <div className="flex items-center gap-4">
+               <div className="p-3 bg-blue-500/20 rounded-xl text-blue-500">
+                  <Award size={32} />
+               </div>
+               <div>
+                  <h3 className="text-white font-bold text-lg">ISO 9001:2015</h3>
+                  <p className="text-slate-400 text-sm">BMQR Certified Quality Standards</p>
+               </div>
+            </div>
+
+            <Link href="/awards" className="group flex items-center gap-2 text-white font-bold hover:text-red-500 transition-colors">
+               View All Certifications <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+         </div>
+      </section>
+
+      {/* 3. LEGACY & STATS */}
       <section className="bg-slate-950 py-16 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-red-500 font-bold uppercase tracking-widest mb-2">Who We Are</h3>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Legacy of Expansion</h2>
@@ -70,16 +121,16 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <StatBox number="20+" label="Years of Excellence" />
+              <StatBox number="25+" label="Years of Excellence" />
               <StatBox number="03" label="Manufacturing Units" />
-              <StatBox number="EPC" label="Turnkey Execution" />
-              <StatBox number="ISO" label="9001:2008 Certified" />
+              <StatBox number="EPIC" label="Turnkey Execution" />
+              <StatBox number="SSI" label="Govt Registered" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. INFRASTRUCTURE (UPDATED WITH ADDRESSES) */}
+      {/* 4. INFRASTRUCTURE */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -89,37 +140,32 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* UNIT 3 */}
             <FacilityCard 
               title="Vallam Vadagal, Oragadam"
               tag="UNIT 3"
               desc="Our newest state-of-the-art facility dedicated to modern infrastructure. This plant spearheads our Automatic Car Parking Systems market."
-              address="Plot No. K14, No. G-113/1, 4th Cross Road, SIPCOT Industrial Park, Vallam Vadagal, Kanchipuram District - 602105."
+              address="Plot No. K14, No. G-113/1, 4th Cross Road, SIPCOT Industrial Park, Vallam Vadagal."
               icon={<Car size={32} className="text-red-600" />}
             />
-            
-            {/* UNIT 2 */}
             <FacilityCard 
-              title="Sriperumbuthur Facility"
+              title="Sriperumbudur Facility"
               tag="UNIT 2"
               desc="A comprehensive center for heavy fabrication. Handles Pipelines, Vessels, Columns, blasting, coating, and valve testing."
-              address="SIPCOT Industrial Complex, Sriperumbuthur, Kancheepuram - 602105, Tamilnadu - India."
+              address="SIPCOT Industrial Complex, Sriperumpudur, Kancheepuram District."
               icon={<Settings size={32} className="text-red-600" />}
             />
-
-            {/* UNIT 1 */}
             <FacilityCard 
               title="Ekkattuthangal Facility"
               tag="UNIT 1"
               desc="Specializes in high-precision fabrication for Carbon Steel Structures, Wind Mill Tower components, and Gear Box systems."
-              address="No. 22, North Phase, Guindy Industrial Estate, Ekkattuthangal, Chennai – 600032, Tamilnadu, India."
+              address="Guindy Industrial Estate, Ekkattuthangal, Chennai – 600032."
               icon={<Cpu size={32} className="text-red-600" />}
             />
           </div>
         </div>
       </section>
 
-      {/* 4. PRODUCT FOCUS: SMART PARKING */}
+      {/* 5. PRODUCT FOCUS: SMART PARKING */}
       <section id="parking" className="bg-slate-900 text-white py-24 px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600 rounded-full blur-[120px] opacity-10"></div>
         
@@ -138,7 +184,7 @@ export default function Home() {
               subtitle="Ideal for Tight Spaces"
               desc="Operates on a vertical cycle mechanism (like a Ferris wheel). The most space-efficient solution for small plots."
               features={[
-                "Capacity: 6 to 16 cars in space of 2",
+                "Capacity: 6 to 16 cars",
                 "One-touch automated operation",
                 "Ideal for offices & hospitals"
               ]}
@@ -160,7 +206,7 @@ export default function Home() {
               desc="A versatile semi-automated solution where pallets move horizontally and vertically to clear a path."
               features={[
                 "Configurable 2 to 6 levels",
-                "Independent parking retrieval",
+                "Independent retrieval",
                 "Modular & Cost-effective"
               ]}
             />
@@ -168,7 +214,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. CORE CAPABILITIES */}
+      {/* 6. CORE CAPABILITIES */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900">Core Capabilities</h2>
@@ -180,30 +226,6 @@ export default function Home() {
           <CapabilityCard icon={<Car />} title="Urban Infrastructure" desc="Automated Car Parking Systems for smart cities." />
           <CapabilityCard icon={<Zap />} title="Renewable Energy" desc="Carbon Steel Structural components for Wind Mill Towers." />
           <CapabilityCard icon={<Settings />} title="Heavy Engineering" desc="Pressure Vessels, Heat Exchangers & Gear Box Components." />
-        </div>
-      </section>
-
-      {/* 6. WHY CHOOSE US */}
-      <section className="bg-slate-100 py-20 px-6">
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-10 shadow-xl border border-slate-200">
-          <h2 className="text-3xl font-bold text-center mb-8">Why Choose TRIMAAX?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <ShieldCheck className="w-12 h-12 text-red-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg">ISO 9001:2008</h3>
-              <p className="text-sm text-gray-500 mt-2">High-grade steel & safety testing.</p>
-            </div>
-            <div className="text-center">
-              <MapPin className="w-12 h-12 text-red-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg">End-to-End</h3>
-              <p className="text-sm text-gray-500 mt-2">Feasibility, Design, AMC.</p>
-            </div>
-            <div className="text-center">
-              <CheckCircle className="w-12 h-12 text-red-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg">Safety First</h3>
-              <p className="text-sm text-gray-500 mt-2">Multiple sensors & emergency stops.</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -224,7 +246,6 @@ function StatBox({ number, label }: { number: string; label: string }) {
   );
 }
 
-// Updated Facility Card with Address Support
 function FacilityCard({ title, tag, desc, address, icon }: { title: string; tag: string; desc: string; address: string; icon: any }) {
   return (
     <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-red-200 transition-all group flex flex-col h-full">
